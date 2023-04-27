@@ -6,3 +6,21 @@
 //
 
 import Foundation
+
+protocol MyItemable: Hashable {
+    var id: UUID { get }
+    var value: Int { get }
+}
+
+struct MyItem: MyItemable {
+    let id = UUID()
+    let value: Int
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: MyItem, rhs: MyItem) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

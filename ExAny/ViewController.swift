@@ -11,9 +11,14 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let tableView = UITableView()
+        let dataSource = MyDataSource(tableView: tableView) { tableView, indexPath, itemIdentifier in
+            switch itemIdentifier {
+            case let .item(item):
+                print(item.value)
+            }
+            return UITableViewCell()
+        }
     }
-
-
 }
-
